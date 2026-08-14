@@ -21,7 +21,6 @@ D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\scopedcss\bundle\BibliotecaMVC.styles.css
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\scopedcss\projectbundle\BibliotecaMVC.bundle.scp.css
-D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\compressed\1clyn8z30k-{0}-b9sayid5wm-b9sayid5wm.gz
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\compressed\pvz5heplim-{0}-61n19gt1b8-61n19gt1b8.gz
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\compressed\4i56l1hmhg-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\compressed\s28igsasyt-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -95,3 +94,5 @@ D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\BibliotecaMVC.pdb
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\BibliotecaMVC.genruntimeconfig.cache
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\ref\BibliotecaMVC.dll
+D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\BibliotecaMVC.sourcelink.json
+D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\compressed\1clyn8z30k-{0}-ff561dibtv-ff561dibtv.gz

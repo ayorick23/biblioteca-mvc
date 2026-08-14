@@ -1,8 +1,83 @@
-﻿@{
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1>Sistema de Gestión de Biblioteca</h1>
-    <p>Bienvenidos al sistema desarrollado con ASP.NET Core MVC.</p>
+<!-- Hero -->
+<div class="p-5 mb-4 bg-primary text-white rounded-3 text-center">
+    <h1 class="display-5 fw-bold">Biblioteca Virtual UEES</h1>
+    <p class="fs-4">Explora miles de libros, autores y categorías desde un solo lugar.</p>
+    <a asp-controller="Home" asp-action="Libros" class="btn btn-light btn-lg">Ver Catálogo de Libros</a>
+</div>
+
+<!-- Servicios / Grid con Cards -->
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
+    <div class="col">
+        <div class="card h-100 text-center shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">📚 Libros</h5>
+                <p class="card-text">Consulta el catálogo completo de libros disponibles en la biblioteca.</p>
+                <a asp-controller="Home" asp-action="Libros" class="btn btn-primary">Ver Libros</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100 text-center shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">✍️ Autores</h5>
+                <p class="card-text">Conoce a los autores y sus obras disponibles en nuestra colección.</p>
+                <a asp-controller="Home" asp-action="Autores" class="btn btn-primary">Ver Autores</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100 text-center shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">🏷️ Categorías</h5>
+                <p class="card-text">Explora los libros organizados por categorías temáticas.</p>
+                <a asp-controller="Home" asp-action="Categorias" class="btn btn-primary">Ver Categorías</a>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100 text-center shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">🔄 Préstamos</h5>
+                <p class="card-text">Revisa el estado de los préstamos de libros de la biblioteca.</p>
+                <a asp-controller="Home" asp-action="Prestamos" class="btn btn-primary">Ver Préstamos</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Carrusel de libros destacados (Reto) -->
+<h2 class="text-center mb-4">Libros Destacados</h2>
+<div id="carruselLibros" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carruselLibros" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#carruselLibros" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#carruselLibros" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner rounded-3">
+        <div class="carousel-item active">
+            <div class="d-flex align-items-center justify-content-center bg-secondary text-white" style="height: 300px;">
+                <h3>Cien Años de Soledad - Gabriel García Márquez</h3>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-flex align-items-center justify-content-center bg-dark text-white" style="height: 300px;">
+                <h3>Don Quijote de la Mancha - Miguel de Cervantes</h3>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-flex align-items-center justify-content-center bg-info text-white" style="height: 300px;">
+                <h3>1984 - George Orwell</h3>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carruselLibros" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carruselLibros" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
 </div>
