@@ -16,11 +16,6 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Autores()
-    {
-        return View();
-    }
-
     public IActionResult Categorias()
     {
         return View();

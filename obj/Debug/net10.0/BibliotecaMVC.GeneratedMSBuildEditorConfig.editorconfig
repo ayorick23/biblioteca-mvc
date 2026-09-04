@@ -23,12 +23,16 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Home/AcercaDe.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2VyY2FEZS5jc2h0bWw=
+[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Autores/Detalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3Jlc1xEZXRhbGxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Home/Autores.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBdXRvcmVzLmNzaHRtbA==
+[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Autores/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3Jlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Home/AcercaDe.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2VyY2FEZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Home/Categorias.cshtml]

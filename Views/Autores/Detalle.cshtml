@@ -1,0 +1,20 @@
+@model BibliotecaMVC.Models.Autor
+
+@{
+    ViewData["Title"] = "Detalle del Autor";
+}
+
+<h1>Detalle del Autor</h1>
+
+<dl class="row">
+    <dt class="col-sm-2">Nombres</dt>
+    <dd class="col-sm-10">@Model.Nombres</dd>
+
+    <dt class="col-sm-2">Apellidos</dt>
+    <dd class="col-sm-10">@Model.Apellidos</dd>
+
+    <dt class="col-sm-2">Nacionalidad</dt>
+    <dd class="col-sm-10">@Model.Nacionalidad</dd>
+</dl>
+
+<a asp-controller="Autores" asp-action="Index">Volver al listado</a>

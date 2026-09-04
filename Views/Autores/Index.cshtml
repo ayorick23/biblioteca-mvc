@@ -1,0 +1,34 @@
+@model List<BibliotecaMVC.Models.Autor>
+
+@{
+    ViewData["Title"] = "Autores";
+}
+
+<div class="text-center">
+    <h1>Gestión de Autores</h1>
+    <p>En este módulo se administrarán los autores de los libros</p>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Nacionalidad</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var autor in Model)
+        {
+            <tr>
+                <td>@autor.Nombres</td>
+                <td>@autor.Apellidos</td>
+                <td>@autor.Nacionalidad</td>
+                <td>
+                    <a asp-controller="Autores" asp-action="Detalle" asp-route-id="@autor.Id">Ver detalle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

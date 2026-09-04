@@ -1,7 +1,14 @@
+using BibliotecaMVC.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Actividad 3: registro de IAutorService con ciclo de vida Scoped.
+// Actividad 5: para usar la segunda implementación, basta con cambiar
+// esta línea a AddScoped<IAutorService, AutorServiceAlterno>() sin tocar el controlador.
+builder.Services.AddScoped<IAutorService, AutorService>();
 
 var app = builder.Build();
 
