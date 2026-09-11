@@ -10,6 +10,10 @@ builder.Services.AddControllersWithViews();
 // esta línea a AddScoped<IAutorService, AutorServiceAlterno>() sin tocar el controlador.
 builder.Services.AddScoped<IAutorService, AutorService>();
 
+// Actividad: registro de ICategoriaService (ADO.NET) con ciclo de vida Scoped.
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<ILibroService, LibroService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

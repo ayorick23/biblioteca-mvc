@@ -1,0 +1,20 @@
+@model BibliotecaMVC.Models.Categoria
+
+@{
+    ViewData["Title"] = "Agregar categoría";
+}
+
+<h1>Agregar categoría</h1>
+
+<form asp-controller="Categorias" asp-action="Crear" method="post">
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label">Nombre</label>
+        <input asp-for="Nombre" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Descripcion" class="form-label">Descripción</label>
+        <textarea asp-for="Descripcion" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-controller="Categorias" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

@@ -31,20 +31,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0b3Jlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Categorias/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xDcmVhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Categorias/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xFZGl0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Categorias/Eliminar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xFbGltaW5hci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Categorias/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcmlhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Home/AcercaDe.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2VyY2FEZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Home/Categorias.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXRlZ29yaWFzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Home/Libros.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMaWJyb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Home/Prestamos.cshtml]
@@ -53,6 +61,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Home/Usuarios.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc3Vhcmlvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Libros/Crear.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicm9zXENyZWFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Libros/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicm9zXEVkaXRhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Libros/Eliminar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicm9zXEVsaW1pbmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Libros/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGlicm9zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Documentos/UEES/PROGRAMACIÓN WEB II (FRONTEND)/Ejercicio Clase/BibliotecaMVC/Views/Shared/Error.cshtml]

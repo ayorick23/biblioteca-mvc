@@ -1,0 +1,38 @@
+@model List<BibliotecaMVC.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<div class="text-center">
+    <h1>Gestión de Categorías</h1>
+    <p>En este módulo se administrarán las categorías de los libros</p>
+</div>
+
+<p>
+    <a asp-controller="Categorias" asp-action="Crear" class="btn btn-primary">Agregar categoría</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var categoria in Model)
+        {
+            <tr>
+                <td>@categoria.Nombre</td>
+                <td>@categoria.Descripcion</td>
+                <td>
+                    <a asp-controller="Categorias" asp-action="Editar" asp-route-id="@categoria.Id">Editar</a>
+                    |
+                    <a asp-controller="Categorias" asp-action="Eliminar" asp-route-id="@categoria.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,22 @@
+@model BibliotecaMVC.Models.Categoria
+
+@{
+    ViewData["Title"] = "Eliminar categoría";
+}
+
+<h1>Eliminar categoría</h1>
+
+<p>¿Está seguro de que desea eliminar la siguiente categoría?</p>
+
+<dl class="row">
+    <dt class="col-sm-2">Nombre</dt>
+    <dd class="col-sm-10">@Model.Nombre</dd>
+    <dt class="col-sm-2">Descripción</dt>
+    <dd class="col-sm-10">@Model.Descripcion</dd>
+</dl>
+
+<form asp-controller="Categorias" asp-action="EliminarConfirmado" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+    <a asp-controller="Categorias" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

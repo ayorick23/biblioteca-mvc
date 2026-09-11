@@ -1,0 +1,42 @@
+@model List<BibliotecaMVC.Models.Libro>
+
+@{
+    ViewData["Title"] = "Libros";
+}
+
+<div class="text-center">
+    <h1>Gestión de Libros</h1>
+    <p>En este módulo se administrarán los libros de la biblioteca</p>
+</div>
+
+<p>
+    <a asp-controller="Libros" asp-action="Crear" class="btn btn-primary">Agregar libro</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Categoría</th>
+            <th>Año</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var libro in Model)
+        {
+            <tr>
+                <td>@libro.Titulo</td>
+                <td>@libro.Autor</td>
+                <td>@libro.CategoriaNombre</td>
+                <td>@libro.Anio</td>
+                <td>
+                    <a asp-controller="Libros" asp-action="Editar" asp-route-id="@libro.Id">Editar</a>
+                    |
+                    <a asp-controller="Libros" asp-action="Eliminar" asp-route-id="@libro.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

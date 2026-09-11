@@ -11,16 +11,6 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Libros()
-    {
-        return View();
-    }
-
-    public IActionResult Categorias()
-    {
-        return View();
-    }
-
     public IActionResult Usuarios()
     {
         return View();
