@@ -1,47 +1,40 @@
+using BibliotecaMVC.Data;
 using BibliotecaMVC.Models;
-using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace BibliotecaMVC.Services;
 
+// Actividades 2 y 3: Mostrar y Agregar libros usando Entity Framework Core
+// a través del DbContext (BibliotecaContext) y su DbSet<Libro>.
 public class LibroService : ILibroService
 {
-    private readonly string _connectionString;
+    private readonly BibliotecaContext _context;
+    private readonly ICategoriaService _categoriaService;
 
-    public LibroService(IConfiguration configuration)
+    public LibroService(BibliotecaContext context, ICategoriaService categoriaService)
     {
-        _connectionString = configuration.GetConnectionString("BibliotecaMVC")
-            ?? throw new InvalidOperationException("No se encontró la cadena de conexión 'BibliotecaMVC'.");
+        _context = context;
+        _categoriaService = categoriaService;
     }
 
-    private const string SelectBase =
-        "SELECT l.Id, l.Titulo, l.Autor, l.CategoriaId, c.Nombre, l.Anio " +
-        "FROM Libros l INNER JOIN Categorias c ON l.CategoriaId = c.Id";
-
-    private static Libro LeerLibro(SqlDataReader lector)
+    // Como CategoriaNombre no está mapeado en la base de datos, se completa
+    // aquí a partir de las categorías ya existentes, para mostrarlo en la vista.
+    private void CompletarNombreCategoria(Libro libro)
     {
-        return new Libro
-        {
-            Id = lector.GetInt32(0),
-            Titulo = lector.GetString(1),
-            Autor = lector.GetString(2),
-            CategoriaId = lector.GetInt32(3),
-            CategoriaNombre = lector.GetString(4),
-            Anio = lector.IsDBNull(5) ? null : lector.GetInt32(5)
-        };
+        var categoria = _categoriaService.ObtenerCategoriaPorId(libro.CategoriaId);
+        libro.CategoriaNombre = categoria?.Nombre ?? string.Empty;
     }
 
     public List<Libro> ObtenerLibros()
     {
-        var libros = new List<Libro>();
+        var libros = _context.Libros
+            .AsNoTracking()
+            .OrderBy(l => l.Titulo)
+            .ToList();
 
-        using var conexion = new SqlConnection(_connectionString);
-        using var comando = new SqlCommand(SelectBase + " ORDER BY l.Titulo", conexion);
-
-        conexion.Open();
-        using var lector = comando.ExecuteReader();
-        while (lector.Read())
+        foreach (var libro in libros)
         {
-            libros.Add(LeerLibro(lector));
+            CompletarNombreCategoria(libro);
         }
 
         return libros;
@@ -49,56 +42,49 @@ public class LibroService : ILibroService
 
     public Libro? ObtenerLibroPorId(int id)
     {
-        using var conexion = new SqlConnection(_connectionString);
-        using var comando = new SqlCommand(SelectBase + " WHERE l.Id = @Id", conexion);
-        comando.Parameters.AddWithValue("@Id", id);
+        var libro = _context.Libros
+            .AsNoTracking()
+            .FirstOrDefault(l => l.Id == id);
 
-        conexion.Open();
-        using var lector = comando.ExecuteReader();
-        if (lector.Read())
+        if (libro != null)
         {
-            return LeerLibro(lector);
+            CompletarNombreCategoria(libro);
         }
 
-        return null;
+        return libro;
     }
 
     public void CrearLibro(Libro libro)
     {
-        using var conexion = new SqlConnection(_connectionString);
-        using var comando = new SqlCommand(
-            "INSERT INTO Libros (Titulo, Autor, CategoriaId, Anio) VALUES (@Titulo, @Autor, @CategoriaId, @Anio)", conexion);
-        comando.Parameters.AddWithValue("@Titulo", libro.Titulo);
-        comando.Parameters.AddWithValue("@Autor", libro.Autor);
-        comando.Parameters.AddWithValue("@CategoriaId", libro.CategoriaId);
-        comando.Parameters.AddWithValue("@Anio", (object?)libro.Anio ?? DBNull.Value);
-
-        conexion.Open();
-        comando.ExecuteNonQuery();
+        _context.Libros.Add(libro);
+        _context.SaveChanges();
     }
 
     public void ActualizarLibro(Libro libro)
     {
-        using var conexion = new SqlConnection(_connectionString);
-        using var comando = new SqlCommand(
-            "UPDATE Libros SET Titulo = @Titulo, Autor = @Autor, CategoriaId = @CategoriaId, Anio = @Anio WHERE Id = @Id", conexion);
-        comando.Parameters.AddWithValue("@Titulo", libro.Titulo);
-        comando.Parameters.AddWithValue("@Autor", libro.Autor);
-        comando.Parameters.AddWithValue("@CategoriaId", libro.CategoriaId);
-        comando.Parameters.AddWithValue("@Anio", (object?)libro.Anio ?? DBNull.Value);
-        comando.Parameters.AddWithValue("@Id", libro.Id);
+        var libroExistente = _context.Libros.Find(libro.Id);
+        if (libroExistente == null)
+        {
+            return;
+        }
 
-        conexion.Open();
-        comando.ExecuteNonQuery();
+        libroExistente.Titulo = libro.Titulo;
+        libroExistente.Autor = libro.Autor;
+        libroExistente.CategoriaId = libro.CategoriaId;
+        libroExistente.Anio = libro.Anio;
+
+        _context.SaveChanges();
     }
 
     public void EliminarLibro(int id)
     {
-        using var conexion = new SqlConnection(_connectionString);
-        using var comando = new SqlCommand("DELETE FROM Libros WHERE Id = @Id", conexion);
-        comando.Parameters.AddWithValue("@Id", id);
+        var libroExistente = _context.Libros.Find(id);
+        if (libroExistente == null)
+        {
+            return;
+        }
 
-        conexion.Open();
-        comando.ExecuteNonQuery();
+        _context.Libros.Remove(libroExistente);
+        _context.SaveChanges();
     }
 }

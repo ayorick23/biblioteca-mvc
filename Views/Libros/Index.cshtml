@@ -10,33 +10,41 @@
 </div>
 
 <p>
-    <a asp-controller="Libros" asp-action="Crear" class="btn btn-primary">Agregar libro</a>
+    <a asp-controller="Libros" asp-action="Crear" class="btn btn-primary">+ Agregar libro</a>
 </p>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Título</th>
-            <th>Autor</th>
-            <th>Categoría</th>
-            <th>Año</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var libro in Model)
-        {
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Todavía no hay libros registrados. Use el botón "Agregar libro" para crear el primero.
+    </div>
+}
+else
+{
+    <table class="table table-striped table-hover align-middle">
+        <thead class="table-light">
             <tr>
-                <td>@libro.Titulo</td>
-                <td>@libro.Autor</td>
-                <td>@libro.CategoriaNombre</td>
-                <td>@libro.Anio</td>
-                <td>
-                    <a asp-controller="Libros" asp-action="Editar" asp-route-id="@libro.Id">Editar</a>
-                    |
-                    <a asp-controller="Libros" asp-action="Eliminar" asp-route-id="@libro.Id">Eliminar</a>
-                </td>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Categoría</th>
+                <th>Año</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var libro in Model)
+            {
+                <tr>
+                    <td>@libro.Titulo</td>
+                    <td>@libro.Autor</td>
+                    <td><span class="badge bg-secondary">@libro.CategoriaNombre</span></td>
+                    <td>@(libro.Anio?.ToString() ?? "-")</td>
+                    <td class="text-end">
+                        <a asp-controller="Libros" asp-action="Editar" asp-route-id="@libro.Id" class="btn btn-sm btn-outline-primary">Editar</a>
+                        <a asp-controller="Libros" asp-action="Eliminar" asp-route-id="@libro.Id" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

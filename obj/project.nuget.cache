@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Rtz3DtmICfc=",
+  "dgSpecHash": "2XWtELoci3I=",
   "success": true,
   "projectFilePath": "D:\\Documentos\\UEES\\PROGRAMACIÓN WEB II (FRONTEND)\\Ejercicio Clase\\BibliotecaMVC\\BibliotecaMVC.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,11 @@
     "C:\\Users\\Dereck\\.nuget\\packages\\microsoft.data.sqlclient.extensions.abstractions\\7.0.3\\microsoft.data.sqlclient.extensions.abstractions.7.0.3.nupkg.sha512",
     "C:\\Users\\Dereck\\.nuget\\packages\\microsoft.data.sqlclient.internal.logging\\7.0.3\\microsoft.data.sqlclient.internal.logging.7.0.3.nupkg.sha512",
     "C:\\Users\\Dereck\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\6.0.3\\microsoft.data.sqlclient.sni.runtime.6.0.3.nupkg.sha512",
+    "C:\\Users\\Dereck\\.nuget\\packages\\microsoft.entityframeworkcore\\10.0.0\\microsoft.entityframeworkcore.10.0.0.nupkg.sha512",
+    "C:\\Users\\Dereck\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\10.0.0\\microsoft.entityframeworkcore.abstractions.10.0.0.nupkg.sha512",
+    "C:\\Users\\Dereck\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\10.0.0\\microsoft.entityframeworkcore.analyzers.10.0.0.nupkg.sha512",
+    "C:\\Users\\Dereck\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\10.0.0\\microsoft.entityframeworkcore.relational.10.0.0.nupkg.sha512",
+    "C:\\Users\\Dereck\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\10.0.0\\microsoft.entityframeworkcore.sqlserver.10.0.0.nupkg.sha512",
     "C:\\Users\\Dereck\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.16.0\\microsoft.identitymodel.abstractions.8.16.0.nupkg.sha512",
     "C:\\Users\\Dereck\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.16.0\\microsoft.identitymodel.jsonwebtokens.8.16.0.nupkg.sha512",
     "C:\\Users\\Dereck\\.nuget\\packages\\microsoft.identitymodel.logging\\8.16.0\\microsoft.identitymodel.logging.8.16.0.nupkg.sha512",

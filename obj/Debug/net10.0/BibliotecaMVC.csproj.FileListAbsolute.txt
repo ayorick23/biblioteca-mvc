@@ -130,3 +130,7 @@ D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\bin\Debug\net10.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\BibliotecaMVC.csproj.AssemblyReference.cache
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\Bibliote.C3F116B9.Up2Date
+D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.dll
+D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.SqlServer.dll
