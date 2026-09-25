@@ -43,6 +43,7 @@ public class LibrosController : Controller
         }
 
         _libroService.CrearLibro(libro);
+        TempData["Mensaje"] = "El libro se agregó correctamente.";
         return RedirectToAction(nameof(Index));
     }
 
@@ -69,25 +70,17 @@ public class LibrosController : Controller
         }
 
         _libroService.ActualizarLibro(libro);
+        TempData["Mensaje"] = "El libro se actualizó correctamente.";
         return RedirectToAction(nameof(Index));
     }
 
-    public IActionResult Eliminar(int id)
-    {
-        var libro = _libroService.ObtenerLibroPorId(id);
-        if (libro == null)
-        {
-            return NotFound();
-        }
-
-        return View(libro);
-    }
-
+    // La confirmación se solicita con SweetAlert desde el listado.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult EliminarConfirmado(int id)
+    public IActionResult Eliminar(int id)
     {
         _libroService.EliminarLibro(id);
+        TempData["Mensaje"] = "El libro se eliminó correctamente.";
         return RedirectToAction(nameof(Index));
     }
 }

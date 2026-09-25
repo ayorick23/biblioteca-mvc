@@ -1,38 +1,53 @@
 @model List<BibliotecaMVC.Models.Categoria>
 
 @{
-    ViewData["Title"] = "Categorias";
+    ViewData["Title"] = "Categorías";
 }
 
-<div class="text-center">
-    <h1>Gestión de Categorías</h1>
-    <p>En este módulo se administrarán las categorías de los libros</p>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1>Gestión de Categorías</h1>
+        <p class="text-muted mb-0">Consulte, agregue, edite o elimine las categorías de los libros.</p>
+    </div>
+    <a asp-controller="Categorias" asp-action="Crear" class="btn btn-primary">+ Agregar categoría</a>
 </div>
 
-<p>
-    <a asp-controller="Categorias" asp-action="Crear" class="btn btn-primary">Agregar categoría</a>
-</p>
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var categoria in Model)
-        {
-            <tr>
-                <td>@categoria.Nombre</td>
-                <td>@categoria.Descripcion</td>
-                <td>
-                    <a asp-controller="Categorias" asp-action="Editar" asp-route-id="@categoria.Id">Editar</a>
-                    |
-                    <a asp-controller="Categorias" asp-action="Eliminar" asp-route-id="@categoria.Id">Eliminar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Todavía no hay categorías registradas. Use el botón "Agregar categoría" para crear la primera.
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th class="text-end">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var categoria in Model)
+                    {
+                        <tr>
+                            <td>@categoria.Nombre</td>
+                            <td>@categoria.Descripcion</td>
+                            <td class="text-end">
+                                <a asp-controller="Categorias" asp-action="Editar" asp-route-id="@categoria.Id" class="btn btn-sm btn-outline-primary">Editar</a>
+                                <form asp-controller="Categorias" asp-action="Eliminar" asp-route-id="@categoria.Id" method="post" class="d-inline"
+                                      data-confirmar="Se eliminará la categoría: @categoria.Nombre. Esta acción no se puede deshacer." data-tipo="eliminar">
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <p class="text-muted mt-2">Total de categorías: @Model.Count</p>
+}

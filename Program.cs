@@ -13,15 +13,13 @@ var connectionString = builder.Configuration.GetConnectionString("BibliotecaMVC"
     ?? throw new InvalidOperationException("No se encontró la cadena de conexión 'BibliotecaMVC'.");
 builder.Services.AddDbContext<BibliotecaContext>(options => options.UseSqlServer(connectionString));
 
-// Actividad 3: registro de IAutorService con ciclo de vida Scoped.
-// Actividad 5: para usar la segunda implementación, basta con cambiar
-// esta línea a AddScoped<IAutorService, AutorServiceAlterno>() sin tocar el controlador.
+// AutorService usa Entity Framework Core (BibliotecaContext) para el CRUD de Autores.
 builder.Services.AddScoped<IAutorService, AutorService>();
 
 // Actividad: registro de ICategoriaService (ADO.NET) con ciclo de vida Scoped.
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 
-// Actividades 2 y 3: LibroService ahora usa Entity Framework Core (BibliotecaContext).
+// LibroService usa Entity Framework Core (BibliotecaContext) para el CRUD de Libros.
 builder.Services.AddScoped<ILibroService, LibroService>();
 
 var app = builder.Build();

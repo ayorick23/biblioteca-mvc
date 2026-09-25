@@ -60,7 +60,20 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @* Mensaje de éxito después de agregar, editar o eliminar *@
+    @if (TempData["Mensaje"] != null)
+    {
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: '¡Listo!',
+                text: @Json.Serialize(TempData["Mensaje"]),
+                confirmButtonColor: '#0d6efd'
+            });
+        </script>
+    }
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

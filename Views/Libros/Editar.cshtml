@@ -6,30 +6,46 @@
 }
 
 <h1>Editar libro</h1>
+<p class="text-muted">Modifique la información del libro y presione "Guardar cambios".</p>
 
-<form asp-controller="Libros" asp-action="Editar" method="post">
-    <input type="hidden" asp-for="Id" />
-    <div class="mb-3">
-        <label asp-for="Titulo" class="form-label">Título</label>
-        <input asp-for="Titulo" class="form-control" />
+<div class="card">
+    <div class="card-body">
+        <form asp-controller="Libros" asp-action="Editar" method="post" data-confirmar="Se guardarán los cambios realizados.">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="Titulo" class="form-label"></label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Autor" class="form-label"></label>
+                <input asp-for="Autor" class="form-control" />
+                <span asp-validation-for="Autor" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="CategoriaId" class="form-label"></label>
+                <select asp-for="CategoriaId" class="form-select">
+                    <option value="">-- Seleccione una categoría --</option>
+                    @foreach (var categoria in categorias)
+                    {
+                        <option value="@categoria.Id">@categoria.Nombre</option>
+                    }
+                </select>
+                <span asp-validation-for="CategoriaId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Anio" class="form-label"></label>
+                <input asp-for="Anio" class="form-control" />
+                <span asp-validation-for="Anio" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            <a asp-controller="Libros" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        </form>
     </div>
-    <div class="mb-3">
-        <label asp-for="Autor" class="form-label">Autor</label>
-        <input asp-for="Autor" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label asp-for="CategoriaId" class="form-label">Categoría</label>
-        <select asp-for="CategoriaId" class="form-select">
-            @foreach (var categoria in categorias)
-            {
-                <option value="@categoria.Id" selected="@(categoria.Id == Model.CategoriaId)">@categoria.Nombre</option>
-            }
-        </select>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Anio" class="form-label">Año</label>
-        <input asp-for="Anio" class="form-control" />
-    </div>
-    <button type="submit" class="btn btn-primary">Guardar cambios</button>
-    <a asp-controller="Libros" asp-action="Index" class="btn btn-secondary">Cancelar</a>
-</form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

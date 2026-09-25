@@ -22,7 +22,6 @@ D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\scopedcss\bundle\BibliotecaMVC.styles.css
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\scopedcss\projectbundle\BibliotecaMVC.bundle.scp.css
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\compressed\pvz5heplim-{0}-61n19gt1b8-61n19gt1b8.gz
-D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\compressed\4i56l1hmhg-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\compressed\s28igsasyt-{0}-bqjiyaj88i-bqjiyaj88i.gz
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\compressed\c86di0uawj-{0}-c2jlpeoesf-c2jlpeoesf.gz
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\compressed\0axl4lptoi-{0}-erw9l3u2r3-erw9l3u2r3.gz
@@ -134,3 +133,4 @@ D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.Relational.dll
 D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\bin\Debug\net10.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Documentos\UEES\PROGRAMACIÓN WEB II (FRONTEND)\Ejercicio Clase\BibliotecaMVC\obj\Debug\net10.0\compressed\4i56l1hmhg-{0}-l26gz9tigq-l26gz9tigq.gz

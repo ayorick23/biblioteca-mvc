@@ -1,0 +1,38 @@
+@model BibliotecaMVC.Models.Autor
+
+@{
+    ViewData["Title"] = "Agregar autor";
+}
+
+<h1>Agregar autor</h1>
+<p class="text-muted">Complete el formulario para registrar un nuevo autor.</p>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-controller="Autores" asp-action="Crear" method="post" data-confirmar="Se guardará la información ingresada.">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Nombres" class="form-label"></label>
+                <input asp-for="Nombres" class="form-control" placeholder="Ej: Gabriel" />
+                <span asp-validation-for="Nombres" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Apellidos" class="form-label"></label>
+                <input asp-for="Apellidos" class="form-control" placeholder="Ej: García Márquez" />
+                <span asp-validation-for="Apellidos" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Nacionalidad" class="form-label"></label>
+                <input asp-for="Nacionalidad" class="form-control" placeholder="Ej: Colombia" />
+                <span asp-validation-for="Nacionalidad" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a asp-controller="Autores" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BibliotecaMVC.Services;
 
-// Actividades 2 y 3: Mostrar y Agregar libros usando Entity Framework Core
-// a través del DbContext (BibliotecaContext) y su DbSet<Libro>.
+// CRUD completo de Libros (Mostrar, Agregar, Editar y Eliminar) usando
+// Entity Framework Core a través del DbContext (BibliotecaContext).
 public class LibroService : ILibroService
 {
     private readonly BibliotecaContext _context;
@@ -60,8 +60,10 @@ public class LibroService : ILibroService
         _context.SaveChanges();
     }
 
+    // Actividad 1: Editar libro con Find(), Update() y SaveChanges().
     public void ActualizarLibro(Libro libro)
     {
+        // Find(): localiza el libro en la base de datos por su Id.
         var libroExistente = _context.Libros.Find(libro.Id);
         if (libroExistente == null)
         {
@@ -73,18 +75,25 @@ public class LibroService : ILibroService
         libroExistente.CategoriaId = libro.CategoriaId;
         libroExistente.Anio = libro.Anio;
 
+        // Update(): marca el libro como modificado.
+        _context.Libros.Update(libroExistente);
+        // SaveChanges(): guarda los cambios en SQL Server.
         _context.SaveChanges();
     }
 
+    // Actividad 2: Eliminar libro con Find(), Remove() y SaveChanges().
     public void EliminarLibro(int id)
     {
+        // Find(): localiza el libro en la base de datos por su Id.
         var libroExistente = _context.Libros.Find(id);
         if (libroExistente == null)
         {
             return;
         }
 
+        // Remove(): marca el libro para ser eliminado.
         _context.Libros.Remove(libroExistente);
+        // SaveChanges(): confirma la eliminación en SQL Server.
         _context.SaveChanges();
     }
 }

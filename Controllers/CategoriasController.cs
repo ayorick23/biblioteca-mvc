@@ -34,6 +34,7 @@ public class CategoriasController : Controller
         }
 
         _categoriaService.CrearCategoria(categoria);
+        TempData["Mensaje"] = "La categoría se agregó correctamente.";
         return RedirectToAction(nameof(Index));
     }
 
@@ -58,25 +59,17 @@ public class CategoriasController : Controller
         }
 
         _categoriaService.ActualizarCategoria(categoria);
+        TempData["Mensaje"] = "La categoría se actualizó correctamente.";
         return RedirectToAction(nameof(Index));
     }
 
-    public IActionResult Eliminar(int id)
-    {
-        var categoria = _categoriaService.ObtenerCategoriaPorId(id);
-        if (categoria == null)
-        {
-            return NotFound();
-        }
-
-        return View(categoria);
-    }
-
+    // La confirmación se solicita con SweetAlert desde el listado.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult EliminarConfirmado(int id)
+    public IActionResult Eliminar(int id)
     {
         _categoriaService.EliminarCategoria(id);
+        TempData["Mensaje"] = "La categoría se eliminó correctamente.";
         return RedirectToAction(nameof(Index));
     }
 }

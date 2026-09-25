@@ -14,4 +14,5 @@ public class BibliotecaContext : DbContext
     }
 
     public DbSet<Libro> Libros => Set<Libro>();
+    public DbSet<Autor> Autores => Set<Autor>();
 }
