@@ -1,0 +1,54 @@
+@model BibliotecaMVC.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Iniciar sesión";
+}
+
+@* Actividad 4: diseño mejorado del Login usando Bootstrap y estilos de site.css *@
+<div class="login-page">
+    <div class="card login-card">
+        <div class="login-header">
+            <div class="login-icon">📚</div>
+            <h1>BibliotecaMVC</h1>
+            <p>Ingrese sus credenciales para continuar</p>
+        </div>
+
+        <div class="card-body p-4">
+            <form asp-controller="Cuenta" asp-action="Login" method="post">
+                @* Mensaje cuando las credenciales no son válidas *@
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 login-alert"></div>
+
+                <div class="mb-3">
+                    <label asp-for="UsuarioOCorreo" class="form-label fw-semibold"></label>
+                    <input asp-for="UsuarioOCorreo" class="form-control form-control-lg" placeholder="usuario o correo@ejemplo.com" autofocus />
+                    <span asp-validation-for="UsuarioOCorreo" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label fw-semibold"></label>
+                    <input asp-for="Password" class="form-control form-control-lg" placeholder="Ingrese su contraseña" />
+                    <span asp-validation-for="Password" class="text-danger small"></span>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input asp-for="Recordarme" class="form-check-input" />
+                    <label asp-for="Recordarme" class="form-check-label"></label>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Iniciar sesión</button>
+                </div>
+            </form>
+
+            <hr />
+            <p class="text-center mb-0">
+                ¿No tiene una cuenta?
+                <a asp-controller="Cuenta" asp-action="Registro">Regístrese aquí</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

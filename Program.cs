@@ -1,5 +1,6 @@
 using BibliotecaMVC.Data;
 using BibliotecaMVC.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,21 @@ builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("BibliotecaMVC")
     ?? throw new InvalidOperationException("No se encontró la cadena de conexión 'BibliotecaMVC'.");
 builder.Services.AddDbContext<BibliotecaContext>(options => options.UseSqlServer(connectionString));
+
+// Semana 11 - Actividad 1: configuración de ASP.NET Core Identity con IdentityUser,
+// guardando los usuarios mediante Entity Framework Core en BibliotecaContext.
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+    {
+        options.User.RequireUniqueEmail = true;
+    })
+    .AddEntityFrameworkStores<BibliotecaContext>()
+    .AddDefaultTokenProviders();
+
+// Ruta de la pantalla de Login.
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Cuenta/Login";
+});
 
 // AutorService usa Entity Framework Core (BibliotecaContext) para el CRUD de Autores.
 builder.Services.AddScoped<IAutorService, AutorService>();
@@ -35,6 +51,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapStaticAssets();

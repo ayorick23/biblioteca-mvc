@@ -1,0 +1,60 @@
+@model BibliotecaMVC.Models.RegistroViewModel
+
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<div class="login-page">
+    <div class="card login-card">
+        <div class="login-header">
+            <div class="login-icon">📝</div>
+            <h1>Crear cuenta</h1>
+            <p>Complete el formulario para registrarse</p>
+        </div>
+
+        <div class="card-body p-4">
+            <form asp-controller="Cuenta" asp-action="Registro" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger py-2 login-alert"></div>
+
+                <div class="mb-3">
+                    <label asp-for="NombreUsuario" class="form-label fw-semibold"></label>
+                    <input asp-for="NombreUsuario" class="form-control" placeholder="Ej: jperez" />
+                    <span asp-validation-for="NombreUsuario" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label fw-semibold"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Ej: jperez@correo.com" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label fw-semibold"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <div class="form-text">Mínimo 6 caracteres, con mayúscula, minúscula, número y símbolo.</div>
+                    <span asp-validation-for="Password" class="text-danger small"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="ConfirmarPassword" class="form-label fw-semibold"></label>
+                    <input asp-for="ConfirmarPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmarPassword" class="text-danger small"></span>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Registrarse</button>
+                </div>
+            </form>
+
+            <hr />
+            <p class="text-center mb-0">
+                ¿Ya tiene una cuenta?
+                <a asp-controller="Cuenta" asp-action="Login">Inicie sesión</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
