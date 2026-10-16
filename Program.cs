@@ -19,14 +19,21 @@ builder.Services.AddDbContext<BibliotecaContext>(options => options.UseSqlServer
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     {
         options.User.RequireUniqueEmail = true;
+
+        // Bloqueo de la cuenta por 15 minutos tras 5 intentos fallidos de login.
+        options.Lockout.MaxFailedAccessAttempts = 5;
+        options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
     })
     .AddEntityFrameworkStores<BibliotecaContext>()
+    .AddErrorDescriber<ErroresIdentityEspanol>()
     .AddDefaultTokenProviders();
 
 // Ruta de la pantalla de Login.
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Cuenta/Login";
+    // Semana 12: página que se muestra cuando el usuario no tiene el rol necesario.
+    options.AccessDeniedPath = "/Cuenta/AccesoDenegado";
 });
 
 // AutorService usa Entity Framework Core (BibliotecaContext) para el CRUD de Autores.
@@ -39,6 +46,43 @@ builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<ILibroService, LibroService>();
 
 var app = builder.Build();
+
+// Semana 12 - Actividad 2: creación de roles y asignación a los usuarios.
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+
+    // Roles de la aplicación: Administrador (gestiona libros) y Lector (solo consulta).
+    foreach (var rol in new[] { "Administrador", "Lector" })
+    {
+        if (!await roleManager.RoleExistsAsync(rol))
+        {
+            await roleManager.CreateAsync(new IdentityRole(rol));
+        }
+    }
+
+    // Usuario administrador por defecto.
+    var admin = await userManager.FindByNameAsync("admin");
+    if (admin == null)
+    {
+        admin = new IdentityUser { UserName = "admin", Email = "admin@biblioteca.com" };
+        await userManager.CreateAsync(admin, "Admin123!");
+    }
+    if (!await userManager.IsInRoleAsync(admin, "Administrador"))
+    {
+        await userManager.AddToRoleAsync(admin, "Administrador");
+    }
+
+    // Los usuarios existentes que aún no tienen rol quedan como Lector.
+    foreach (var usuario in userManager.Users.ToList())
+    {
+        if ((await userManager.GetRolesAsync(usuario)).Count == 0)
+        {
+            await userManager.AddToRoleAsync(usuario, "Lector");
+        }
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

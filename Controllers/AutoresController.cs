@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using BibliotecaMVC.Models;
 using BibliotecaMVC.Services;
 
 namespace BibliotecaMVC.Controllers;
 
+[Authorize]
 public class AutoresController : Controller
 {
     private readonly IAutorService _autorService;

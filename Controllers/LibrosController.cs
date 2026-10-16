@@ -1,9 +1,12 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using BibliotecaMVC.Models;
 using BibliotecaMVC.Services;
 
 namespace BibliotecaMVC.Controllers;
 
+// Semana 12: cualquier usuario autenticado puede consultar; solo el Administrador puede agregar, editar y eliminar.
+[Authorize]
 public class LibrosController : Controller
 {
     private readonly ILibroService _libroService;
@@ -26,6 +29,7 @@ public class LibrosController : Controller
         return View(libros);
     }
 
+    [Authorize(Roles = "Administrador")]
     public IActionResult Crear()
     {
         CargarCategorias();
@@ -34,6 +38,7 @@ public class LibrosController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Administrador")]
     public IActionResult Crear(Libro libro)
     {
         if (!ModelState.IsValid)
@@ -47,6 +52,7 @@ public class LibrosController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Roles = "Administrador")]
     public IActionResult Editar(int id)
     {
         var libro = _libroService.ObtenerLibroPorId(id);
@@ -61,6 +67,7 @@ public class LibrosController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Administrador")]
     public IActionResult Editar(Libro libro)
     {
         if (!ModelState.IsValid)
@@ -77,6 +84,7 @@ public class LibrosController : Controller
     // La confirmación se solicita con SweetAlert desde el listado.
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Administrador")]
     public IActionResult Eliminar(int id)
     {
         _libroService.EliminarLibro(id);

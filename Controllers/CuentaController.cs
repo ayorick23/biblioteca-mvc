@@ -43,12 +43,19 @@ public class CuentaController : Controller
         }
 
         // Validación de credenciales con SignInManager.
-        var resultado = await _signInManager.PasswordSignInAsync(nombreUsuario, model.Password, model.Recordarme, false);
+        // lockoutOnFailure: true cuenta los intentos fallidos para bloquear la cuenta.
+        var resultado = await _signInManager.PasswordSignInAsync(nombreUsuario, model.Password, model.Recordarme, true);
 
         if (resultado.Succeeded)
         {
             TempData["Mensaje"] = "Bienvenido a BibliotecaMVC.";
             return RedirectToAction("Index", "Home");
+        }
+
+        if (resultado.IsLockedOut)
+        {
+            ModelState.AddModelError(string.Empty, "Cuenta bloqueada por 5 intentos fallidos. Intente de nuevo en 15 minutos.");
+            return View(model);
         }
 
         ModelState.AddModelError(string.Empty, "Usuario o contraseña incorrectos.");
@@ -80,6 +87,8 @@ public class CuentaController : Controller
 
         if (resultado.Succeeded)
         {
+            // Semana 12: todo usuario nuevo se registra con el rol Lector.
+            await _userManager.AddToRoleAsync(usuario, "Lector");
             TempData["Mensaje"] = "Usuario registrado correctamente. Ya puede iniciar sesión.";
             return RedirectToAction(nameof(Login));
         }
@@ -101,5 +110,11 @@ public class CuentaController : Controller
         await _signInManager.SignOutAsync();
         TempData["Mensaje"] = "Sesión cerrada correctamente.";
         return RedirectToAction(nameof(Login));
+    }
+
+    // Semana 12: se muestra cuando el usuario no tiene el rol necesario.
+    public IActionResult AccesoDenegado()
+    {
+        return View();
     }
 }

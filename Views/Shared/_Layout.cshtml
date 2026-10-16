@@ -23,21 +23,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Categorias" asp-action="Index">Categorías</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Libros" asp-action="Index">Libros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Autores" asp-action="Index">Autores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Usuarios">Usuarios</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Prestamos">Préstamos</a>
-                        </li>
+                        @* Solo se muestran estas páginas cuando hay sesión iniciada *@
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Categorias" asp-action="Index">Categorías</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Libros" asp-action="Index">Libros</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Autores" asp-action="Index">Autores</a>
+                            </li>
+                        }
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="AcercaDe">Acerca de</a>
                         </li>
@@ -48,7 +46,11 @@
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
-                                <span class="nav-link text-dark">Hola, @User.Identity.Name</span>
+                                @* Semana 12: muestra el rol del usuario *@
+                                <span class="nav-link text-dark">
+                                    Hola, @User.Identity.Name
+                                    <span class="badge bg-secondary">@(User.IsInRole("Administrador") ? "Administrador" : "Lector")</span>
+                                </span>
                             </li>
                             <li class="nav-item">
                                 <form asp-controller="Cuenta" asp-action="Logout" method="post">
