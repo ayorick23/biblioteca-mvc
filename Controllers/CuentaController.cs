@@ -87,8 +87,8 @@ public class CuentaController : Controller
 
         if (resultado.Succeeded)
         {
-            // Semana 12: todo usuario nuevo se registra con el rol Lector.
-            await _userManager.AddToRoleAsync(usuario, "Lector");
+            // Semana 13: todo usuario nuevo se registra con el rol Usuario.
+            await _userManager.AddToRoleAsync(usuario, "Usuario");
             TempData["Mensaje"] = "Usuario registrado correctamente. Ya puede iniciar sesión.";
             return RedirectToAction(nameof(Login));
         }

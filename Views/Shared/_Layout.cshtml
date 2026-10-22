@@ -32,6 +32,13 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Libros" asp-action="Index">Libros</a>
                             </li>
+                            @* Semana 13: opción visible solo para los roles que pueden agregar libros *@
+                            @if (User.IsInRole("Admin") || User.IsInRole("Bibliotecario"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Libros" asp-action="Crear">Agregar libro</a>
+                                </li>
+                            }
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-controller="Autores" asp-action="Index">Autores</a>
                             </li>
@@ -49,7 +56,7 @@
                                 @* Semana 12: muestra el rol del usuario *@
                                 <span class="nav-link text-dark">
                                     Hola, @User.Identity.Name
-                                    <span class="badge bg-secondary">@(User.IsInRole("Administrador") ? "Administrador" : "Lector")</span>
+                                    <span class="badge bg-secondary">@(User.IsInRole("Admin") ? "Admin" : User.IsInRole("Bibliotecario") ? "Bibliotecario" : "Usuario")</span>
                                 </span>
                             </li>
                             <li class="nav-item">

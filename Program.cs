@@ -47,39 +47,39 @@ builder.Services.AddScoped<ILibroService, LibroService>();
 
 var app = builder.Build();
 
-// Semana 12 - Actividad 2: creación de roles y asignación a los usuarios.
+// Semana 13: los roles (Admin, Bibliotecario y Usuario) y sus usuarios también se pueden
+// crear en SQL Server con el script Scripts/RolesYUsuarios.sql.
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
-    // Roles de la aplicación: Administrador (gestiona libros) y Lector (solo consulta).
-    foreach (var rol in new[] { "Administrador", "Lector" })
+    // Actividad 1: se crea cada rol solo si todavía no existe, para evitar duplicados.
+    foreach (var rol in new[] { "Admin", "Bibliotecario", "Usuario" })
     {
         if (!await roleManager.RoleExistsAsync(rol))
         {
-            await roleManager.CreateAsync(new IdentityRole(rol));
+            var resultado = await roleManager.CreateAsync(new IdentityRole(rol));
+            if (!resultado.Succeeded)
+            {
+                app.Logger.LogError("No se pudo crear el rol {Rol}.", rol);
+            }
         }
     }
 
-    // Usuario administrador por defecto.
-    var admin = await userManager.FindByNameAsync("admin");
-    if (admin == null)
-    {
-        admin = new IdentityUser { UserName = "admin", Email = "admin@biblioteca.com" };
-        await userManager.CreateAsync(admin, "Admin123!");
-    }
-    if (!await userManager.IsInRoleAsync(admin, "Administrador"))
-    {
-        await userManager.AddToRoleAsync(admin, "Administrador");
-    }
+    // A los usuarios que no tienen un rol asignado se les asigna el rol Usuario.
+    var usuarios = userManager.Users.ToList();
 
-    // Los usuarios existentes que aún no tienen rol quedan como Lector.
-    foreach (var usuario in userManager.Users.ToList())
+    foreach (var usuario in usuarios)
     {
-        if ((await userManager.GetRolesAsync(usuario)).Count == 0)
+        var roles = await userManager.GetRolesAsync(usuario);
+        if (roles.Count == 0)
         {
-            await userManager.AddToRoleAsync(usuario, "Lector");
+            var resultado = await userManager.AddToRoleAsync(usuario, "Usuario");
+            if (!resultado.Succeeded)
+            {
+                app.Logger.LogError("No se pudo asignar el rol Usuario a {Usuario}.", usuario.UserName);
+            }
         }
     }
 }

@@ -5,8 +5,8 @@ using BibliotecaMVC.Services;
 
 namespace BibliotecaMVC.Controllers;
 
-// Semana 12: cualquier usuario autenticado puede consultar; solo el Administrador puede agregar, editar y eliminar.
-[Authorize]
+// Semana 13: los tres roles pueden consultar; solo Admin y Bibliotecario pueden agregar, editar y eliminar.
+[Authorize(Roles = "Admin,Bibliotecario,Usuario")]
 public class LibrosController : Controller
 {
     private readonly ILibroService _libroService;
@@ -29,7 +29,19 @@ public class LibrosController : Controller
         return View(libros);
     }
 
-    [Authorize(Roles = "Administrador")]
+    // Semana 13: consulta del detalle de un libro (los tres roles).
+    public IActionResult Detalle(int id)
+    {
+        var libro = _libroService.ObtenerLibroPorId(id);
+        if (libro == null)
+        {
+            return NotFound();
+        }
+
+        return View(libro);
+    }
+
+    [Authorize(Roles = "Admin,Bibliotecario")]
     public IActionResult Crear()
     {
         CargarCategorias();
@@ -38,7 +50,7 @@ public class LibrosController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize(Roles = "Administrador")]
+    [Authorize(Roles = "Admin,Bibliotecario")]
     public IActionResult Crear(Libro libro)
     {
         if (!ModelState.IsValid)
@@ -52,7 +64,7 @@ public class LibrosController : Controller
         return RedirectToAction(nameof(Index));
     }
 
-    [Authorize(Roles = "Administrador")]
+    [Authorize(Roles = "Admin,Bibliotecario")]
     public IActionResult Editar(int id)
     {
         var libro = _libroService.ObtenerLibroPorId(id);
@@ -67,7 +79,7 @@ public class LibrosController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize(Roles = "Administrador")]
+    [Authorize(Roles = "Admin,Bibliotecario")]
     public IActionResult Editar(Libro libro)
     {
         if (!ModelState.IsValid)
@@ -84,7 +96,7 @@ public class LibrosController : Controller
     // La confirmación se solicita con SweetAlert desde el listado.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    [Authorize(Roles = "Administrador")]
+    [Authorize(Roles = "Admin,Bibliotecario")]
     public IActionResult Eliminar(int id)
     {
         _libroService.EliminarLibro(id);
