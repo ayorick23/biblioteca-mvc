@@ -1,0 +1,13 @@
+@* Semana 15 - Reto: Partial View reutilizada en las páginas de Error y Acceso denegado *@
+<div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">🏠 Ir al inicio</a>
+    @if (User.Identity != null && User.Identity.IsAuthenticated)
+    {
+        <a asp-controller="Libros" asp-action="Index" class="btn btn-outline-primary">📚 Ver libros</a>
+        <a asp-controller="Categorias" asp-action="Index" class="btn btn-outline-primary">🏷️ Ver categorías</a>
+    }
+    else
+    {
+        <a asp-controller="Cuenta" asp-action="Login" class="btn btn-outline-primary">🔑 Iniciar sesión</a>
+    }
+</div>

@@ -138,3 +138,47 @@ body {
   margin-bottom: 0;
   padding-left: 1.2rem;
 }
+
+/* ===== Semana 15: páginas de Error y Acceso denegado ===== */
+.mensaje-page {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.mensaje-card {
+  width: 100%;
+  max-width: 560px;
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.mensaje-header {
+  text-align: center;
+  color: white;
+  padding: 2rem 1rem;
+}
+
+.mensaje-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.25rem;
+}
+
+.mensaje-header p {
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+
+.mensaje-error {
+  background: linear-gradient(135deg, #dc3545, #fd7e14);
+}
+
+.mensaje-denegado {
+  background: linear-gradient(135deg, #6f42c1, #0d6efd);
+}
+
+.mensaje-icon {
+  font-size: 4rem;
+}

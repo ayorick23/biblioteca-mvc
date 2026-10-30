@@ -2,13 +2,26 @@
     ViewData["Title"] = "Acceso denegado";
 }
 
-@* Semana 12: mensaje cuando el usuario no tiene autorización *@
-<div class="text-center mt-5">
-    <div class="display-1">🔒</div>
-    <h1 class="mt-3">Acceso denegado</h1>
-    <p class="text-muted">
-        No tiene autorización para realizar esta operación.<br />
-        Solo los usuarios con rol <strong>Admin</strong> o <strong>Bibliotecario</strong> pueden agregar, editar o eliminar libros.
-    </p>
-    <a asp-controller="Libros" asp-action="Index" class="btn btn-primary">Volver a Libros</a>
+@* Semana 15 - Actividad 3: página personalizada cuando el usuario no tiene permisos *@
+<div class="mensaje-page">
+    <div class="card mensaje-card">
+        <div class="mensaje-header mensaje-denegado">
+            <div class="mensaje-icon">🔒</div>
+            <h1>Acceso denegado</h1>
+            <p>No tiene permisos para acceder a este recurso.</p>
+        </div>
+        <div class="card-body text-center p-4">
+            <p class="mb-2">
+                Su rol actual
+                <span class="badge bg-secondary">@(User.IsInRole("Admin") ? "Admin" : User.IsInRole("Bibliotecario") ? "Bibliotecario" : "Usuario")</span>
+                no permite realizar esta operación.
+            </p>
+            <p class="text-muted mb-0">
+                Solo los usuarios con rol <strong>Admin</strong> o <strong>Bibliotecario</strong> pueden agregar, editar o eliminar libros.
+                Si cree que necesita acceso, comuníquese con el administrador.
+            </p>
+
+            <partial name="_BotonesNavegacion" />
+        </div>
+    </div>
 </div>
