@@ -16,4 +16,13 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.0" />
   </ItemGroup>
 
+  <!-- Semana 16: el proyecto de pruebas está dentro de esta carpeta, por eso se excluye
+       para que el proyecto web no compile sus archivos. -->
+  <ItemGroup>
+    <Compile Remove="BibliotecaMVC.Tests\**" />
+    <Content Remove="BibliotecaMVC.Tests\**" />
+    <EmbeddedResource Remove="BibliotecaMVC.Tests\**" />
+    <None Remove="BibliotecaMVC.Tests\**" />
+  </ItemGroup>
+
 </Project>

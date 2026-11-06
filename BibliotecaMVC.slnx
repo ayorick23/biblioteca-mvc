@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="BibliotecaMVC.csproj" />
+  <Project Path="BibliotecaMVC.Tests/BibliotecaMVC.Tests.csproj" />
+</Solution>
