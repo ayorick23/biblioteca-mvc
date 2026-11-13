@@ -5,6 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Semana 17: licencia Community de QuestPDF (gratuita para uso académico y
+// empresas con ingresos menores a 1 millón de USD al año).
+QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
